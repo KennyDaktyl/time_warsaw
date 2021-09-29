@@ -1,6 +1,7 @@
 COLUMNS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 ROWS = ['1', '2', '3', '4', '5', '6', '7', '8']
 
+
 class Figure():
 
     def __init__(self, currentField):
@@ -13,7 +14,7 @@ class Figure():
         if dest_field.upper() in self.list_available_moves():
             return True
         else:
-            return False 
+            return False
 
 
 class Pawn(Figure):
