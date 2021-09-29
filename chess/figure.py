@@ -1,7 +1,6 @@
 COLUMNS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 ROWS = ['1', '2', '3', '4', '5', '6', '7', '8']
 
-
 class Figure():
 
     def __init__(self, currentField):
@@ -33,12 +32,6 @@ class Pawn(Figure):
         col_pos_index = COLUMNS.index(col_pos)
         self.move_up(availableMoves, row_pos_index, col_pos_index)
         return availableMoves
-
-    # def validate_move(self, dest_field):
-    #     if dest_field.upper() in self.list_available_moves():
-    #         return True
-    #     else:
-    #         return False 
 
 
 class Rook(Figure):
@@ -290,22 +283,11 @@ class King(Figure):
         return availableMoves
 
 
-# pawn = Pawn('a1')
-# print(pawn.list_available_moves())
-# print(pawn.validate_move('a2'))
-
-# rook = Rook('c3')
-# print(rook.list_available_moves())
-# print(rook.validate_move('a3'))
-
-# knight = Knight('F2')
-# print(knight.list_available_moves())
-
-# bishop = Bishop('C5')
-# print(bishop.list_available_moves())
-
-# queen = Queen('c3')
-# print(queen.list_available_moves())
-
-# king = King('C3')
-# print(king.list_available_moves())
+PAWNS = {
+    'pawn': Pawn,
+    'rook': Rook,
+    'knight': Knight,
+    'bishop': Bishop,
+    'queen': Queen,
+    'king': King
+}
