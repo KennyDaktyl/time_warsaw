@@ -11,7 +11,10 @@ class Figure():
         pass
 
     def validate_move(self, dest_field):
-        pass
+        if dest_field.upper() in self.list_available_moves():
+            return True
+        else:
+            return False 
 
 
 class Pawn(Figure):
@@ -30,6 +33,12 @@ class Pawn(Figure):
         col_pos_index = COLUMNS.index(col_pos)
         self.move_up(availableMoves, row_pos_index, col_pos_index)
         return availableMoves
+
+    # def validate_move(self, dest_field):
+    #     if dest_field.upper() in self.list_available_moves():
+    #         return True
+    #     else:
+    #         return False 
 
 
 class Rook(Figure):
@@ -281,11 +290,13 @@ class King(Figure):
         return availableMoves
 
 
-# pawn = Pawn('h1')
+# pawn = Pawn('a1')
 # print(pawn.list_available_moves())
+# print(pawn.validate_move('a2'))
 
 # rook = Rook('c3')
 # print(rook.list_available_moves())
+# print(rook.validate_move('a3'))
 
 # knight = Knight('F2')
 # print(knight.list_available_moves())
