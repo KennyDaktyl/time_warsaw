@@ -8,9 +8,9 @@
 
 Technologies used:
 
-- [Python] - a programming language.
-- [Django] - free and open-source web application development framework, written in Python
-- [Django Restframework] - toolkit for building Web APIs.
+- [Python 3.9.5] - a programming language.
+- [Django 3.2.7] - free and open-source web application development framework, written in Python
+- [Django Restframework 3.12.4] - toolkit for building Web APIs.
 - [PyTest] - framework for running automated Python tests.
 
 
