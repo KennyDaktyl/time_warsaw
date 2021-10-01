@@ -14,7 +14,6 @@ def chessboard():
 
 
 class AvailableMove(View):
-
     def get(self, request, chess_figure, current_field):
         try:
             figure = PAWNS[chess_figure](current_field)
@@ -31,13 +30,12 @@ class AvailableMove(View):
             "availableMoves": available_move,
             "figure": chess_figure,
             "error": error,
-            "currentField": current_field.upper()
-                    }
+            "currentField": current_field.upper(),
+        }
         return JsonResponse(data=content, status=_status)
 
 
 class ValidateAvailableMove(View):
-
     def get(self, request, chess_figure, current_field, dest_field):
         try:
             figure = PAWNS[chess_figure](current_field)
@@ -45,8 +43,10 @@ class ValidateAvailableMove(View):
             _status = status.HTTP_200_OK
         except KeyError:
             raise Http404
-        if current_field.upper() not in chessboard() or \
-                dest_field.upper() not in chessboard():
+        if (
+            current_field.upper() not in chessboard()
+            or dest_field.upper() not in chessboard()
+        ):
             move = "invalid"
             error = "Field does not exist."
             _status = status.HTTP_409_CONFLICT
@@ -62,8 +62,8 @@ class ValidateAvailableMove(View):
             "error": error,
             "figure": chess_figure,
             "currentField": current_field.upper(),
-            "destField": dest_field.upper()
-                    }
+            "destField": dest_field.upper(),
+        }
         return JsonResponse(data=content, status=_status)
 
 

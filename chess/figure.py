@@ -1,9 +1,8 @@
-COLUMNS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-ROWS = ['1', '2', '3', '4', '5', '6', '7', '8']
+COLUMNS = ["A", "B", "C", "D", "E", "F", "G", "H"]
+ROWS = ["1", "2", "3", "4", "5", "6", "7", "8"]
 
 
-class Figure():
-
+class Figure:
     def __init__(self, currentField):
         self.currentField = currentField
 
@@ -18,7 +17,6 @@ class Figure():
 
 
 class Pawn(Figure):
-
     def move_up(self, availableMoves, row_pos_index, col_pos_index):
         if row_pos_index + 1 in range(0, len(ROWS)):
             availableMoves.append(
@@ -36,7 +34,6 @@ class Pawn(Figure):
 
 
 class Rook(Figure):
-
     def move_up(self, availableMoves, row_pos_index, col_pos_index):
         for row in ROWS[row_pos_index + 1:]:
             availableMoves.append(COLUMNS[col_pos_index] + row)
@@ -72,52 +69,59 @@ class Rook(Figure):
 
 
 class Knight(Figure):
-
     def move_up_right(self, availableMoves, row_index, col_index):
-        if row_index + 2 in range(0, len(ROWS)) and \
-                    col_index + 1 in range(0, len(COLUMNS)):
+        if row_index + 2 in range(0, len(ROWS)) and col_index + 1 in range(
+            0, len(COLUMNS)
+        ):
             availableMoves.append(COLUMNS[col_index + 1] + ROWS[row_index + 2])
             return availableMoves
 
     def move_up_left(self, availableMoves, row_index, col_index):
-        if row_index + 2 in range(0, len(ROWS)) and \
-                    col_index - 1 in range(0, len(COLUMNS)):
+        if row_index + 2 in range(0, len(ROWS)) and col_index - 1 in range(
+            0, len(COLUMNS)
+        ):
             availableMoves.append(COLUMNS[col_index - 1] + ROWS[row_index + 2])
             return availableMoves
 
     def move_down_right(self, availableMoves, row_index, col_index):
-        if row_index - 2 in range(0, len(ROWS)) and \
-                    col_index + 1 in range(0, len(COLUMNS)):
+        if row_index - 2 in range(0, len(ROWS)) and col_index + 1 in range(
+            0, len(COLUMNS)
+        ):
             availableMoves.append(COLUMNS[col_index + 1] + ROWS[row_index - 2])
             return availableMoves
 
     def move_down_left(self, availableMoves, row_index, col_index):
-        if row_index - 2 in range(0, len(ROWS)) and \
-                    col_index - 1 in range(0, len(COLUMNS)):
+        if row_index - 2 in range(0, len(ROWS)) and col_index - 1 in range(
+            0, len(COLUMNS)
+        ):
             availableMoves.append(COLUMNS[col_index - 1] + ROWS[row_index - 2])
             return availableMoves
 
     def move_right_up(self, availableMoves, row_index, col_index):
-        if row_index + 1 in range(0, len(ROWS)) and \
-                    col_index + 2 in range(0, len(COLUMNS)):
+        if row_index + 1 in range(0, len(ROWS)) and col_index + 2 in range(
+            0, len(COLUMNS)
+        ):
             availableMoves.append(COLUMNS[col_index + 2] + ROWS[row_index + 1])
             return availableMoves
 
     def move_left_up(self, availableMoves, row_index, col_index):
-        if row_index + 1 in range(0, len(ROWS)) and \
-                    col_index - 2 in range(0, len(COLUMNS)):
+        if row_index + 1 in range(0, len(ROWS)) and col_index - 2 in range(
+            0, len(COLUMNS)
+        ):
             availableMoves.append(COLUMNS[col_index - 2] + ROWS[row_index + 1])
             return availableMoves
 
     def move_right_down(self, availableMoves, row_index, col_index):
-        if row_index - 1 in range(0, len(ROWS)) and \
-                    col_index + 2 in range(0, len(COLUMNS)):
+        if row_index - 1 in range(0, len(ROWS)) and col_index + 2 in range(
+            0, len(COLUMNS)
+        ):
             availableMoves.append(COLUMNS[col_index + 2] + ROWS[row_index - 1])
             return availableMoves
 
     def move_left_down(self, availableMoves, row_index, col_index):
-        if row_index - 1 in range(0, len(ROWS)) and \
-                    col_index - 2 in range(0, len(COLUMNS)):
+        if row_index - 1 in range(0, len(ROWS)) and col_index - 2 in range(
+            0, len(COLUMNS)
+        ):
             availableMoves.append(COLUMNS[col_index - 2] + ROWS[row_index - 1])
             return availableMoves
 
@@ -141,12 +145,11 @@ class Knight(Figure):
 
 
 class Bishop(Figure):
-
     def move_up_right(self, availableMoves, indexCol, indexRow):
         new_field_col_right = indexCol + 1
         new_field_row_up = indexRow + 1
-        while new_field_col_right < len(COLUMNS) and \
-                new_field_row_up < len(ROWS):
+        while new_field_col_right < len(
+                COLUMNS) and new_field_row_up < len(ROWS):
             availableMoves.append(
                 COLUMNS[new_field_col_right] + ROWS[new_field_row_up])
             new_field_col_right += 1
@@ -156,8 +159,7 @@ class Bishop(Figure):
     def move_up_left(self, availableMoves, indexCol, indexRow):
         new_field_col_left = indexCol - 1
         new_field_row_up = indexRow + 1
-        while new_field_col_left >= 0 and \
-                new_field_row_up < len(ROWS):
+        while new_field_col_left >= 0 and new_field_row_up < len(ROWS):
             availableMoves.append(
                 COLUMNS[new_field_col_left] + ROWS[new_field_row_up])
             new_field_col_left -= 1
@@ -167,10 +169,10 @@ class Bishop(Figure):
     def move_down_right(self, availableMoves, indexCol, indexRow):
         new_field_col_right = indexCol + 1
         new_field_row_down = indexRow - 1
-        while new_field_col_right < len(COLUMNS) and \
-                new_field_row_down >= 0:
+        while new_field_col_right < len(COLUMNS) and new_field_row_down >= 0:
             availableMoves.append(
-                COLUMNS[new_field_col_right] + ROWS[new_field_row_down])
+                COLUMNS[new_field_col_right] + ROWS[new_field_row_down]
+            )
             new_field_col_right += 1
             new_field_row_down -= 1
         return availableMoves
@@ -180,7 +182,8 @@ class Bishop(Figure):
         new_field_row_down = indexRow - 1
         while new_field_col_left >= 0 and new_field_row_down >= 0:
             availableMoves.append(
-                COLUMNS[new_field_col_left] + ROWS[new_field_row_down])
+                COLUMNS[new_field_col_left] + ROWS[new_field_row_down]
+            )
             new_field_col_left -= 1
             new_field_row_down -= 1
         return availableMoves
@@ -201,27 +204,26 @@ class Bishop(Figure):
 
 
 class Queen(Figure):
-
     def list_available_moves(self):
         availableMoves = []
 
         rook = Rook(self.currentField)
         bishop = Bishop(self.currentField)
-        availableMoves = (
-            rook.list_available_moves() + bishop.list_available_moves())
+        availableMoves = rook.list_available_moves() \
+            + bishop.list_available_moves()
         return availableMoves
 
 
 class King(Figure):
-
     def move_up(self, availableMoves):
         pawn = Pawn(self.currentField)
         availableMoves = pawn.list_available_moves()
         return availableMoves
 
     def move_up_right(self, availableMoves, row_pos_index, col_pos_index):
-        if row_pos_index + 1 in range(0, len(ROWS)) and \
-                col_pos_index + 1 in range(0, len(COLUMNS)):
+        if row_pos_index + 1 \
+            in range(0, len(ROWS)) and col_pos_index + 1 \
+                in range(0, len(COLUMNS)):
             availableMoves.append(
                 COLUMNS[col_pos_index + 1] + ROWS[row_pos_index + 1])
         return availableMoves
@@ -233,8 +235,9 @@ class King(Figure):
         return availableMoves
 
     def move_down_right(self, availableMoves, row_pos_index, col_pos_index):
-        if row_pos_index - 1 in range(0, len(ROWS)) and \
-                col_pos_index + 1 in range(0, len(COLUMNS)):
+        if row_pos_index - 1 \
+            in range(0, len(ROWS)) and col_pos_index + 1 \
+                in range(0, len(COLUMNS)):
             availableMoves.append(
                 COLUMNS[col_pos_index + 1] + ROWS[row_pos_index - 1])
         return availableMoves
@@ -246,8 +249,9 @@ class King(Figure):
         return availableMoves
 
     def move_down_left(self, availableMoves, row_pos_index, col_pos_index):
-        if row_pos_index - 1 in range(0, len(ROWS)) and \
-                col_pos_index - 1 in range(0, len(COLUMNS)):
+        if row_pos_index - 1 \
+            in range(0, len(ROWS)) and col_pos_index - 1 \
+                in range(0, len(COLUMNS)):
             availableMoves.append(
                 COLUMNS[col_pos_index - 1] + ROWS[row_pos_index - 1])
         return availableMoves
@@ -259,8 +263,8 @@ class King(Figure):
         return availableMoves
 
     def move_up_left(self, availableMoves, row_pos_index, col_pos_index):
-        if row_pos_index + 1 in range(0, len(ROWS)) and \
-                col_pos_index - 1 in range(0, len(COLUMNS)):
+        if row_pos_index + 1 in range(0, len(ROWS)) \
+                and col_pos_index - 1 in range(0, len(COLUMNS)):
             availableMoves.append(
                 COLUMNS[col_pos_index - 1] + ROWS[row_pos_index + 1])
         return availableMoves
@@ -285,10 +289,10 @@ class King(Figure):
 
 
 PAWNS = {
-    'pawn': Pawn,
-    'rook': Rook,
-    'knight': Knight,
-    'bishop': Bishop,
-    'queen': Queen,
-    'king': King
+    "pawn": Pawn,
+    "rook": Rook,
+    "knight": Knight,
+    "bishop": Bishop,
+    "queen": Queen,
+    "king": King,
 }
