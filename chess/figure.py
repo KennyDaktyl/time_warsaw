@@ -276,13 +276,13 @@ class King(Figure):
         new_indexRow = indexRow
         new_indexCol = indexCol
 
-        self.move_up_right(availableMoves, new_indexCol, new_indexRow)
-        self.move_right(availableMoves, new_indexCol, new_indexRow)
-        self.move_down_right(availableMoves, new_indexCol, new_indexRow)
-        self.move_down(availableMoves, new_indexCol, new_indexRow)
-        self.move_down_left(availableMoves, new_indexCol, new_indexRow)
-        self.move_left(availableMoves, new_indexCol, new_indexRow)
-        self.move_up_left(availableMoves, new_indexCol, new_indexRow)
+        self.move_up_right(availableMoves, new_indexRow, new_indexCol)
+        self.move_right(availableMoves, new_indexRow, new_indexCol)
+        self.move_down_right(availableMoves, new_indexRow, new_indexCol)
+        self.move_down(availableMoves, new_indexRow, new_indexCol)
+        self.move_down_left(availableMoves, new_indexRow, new_indexCol)
+        self.move_left(availableMoves, new_indexRow, new_indexCol)
+        self.move_up_left(availableMoves, new_indexRow, new_indexCol)
 
         availableMoves += self.move_up(availableMoves)
         return availableMoves
